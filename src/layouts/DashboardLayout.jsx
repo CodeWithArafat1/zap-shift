@@ -6,9 +6,6 @@ const DashboardLayout = () => {
   return (
     <div>
       <Dashboard />
-      <main>
-        <Outlet />
-      </main>
     </div>
   );
 };

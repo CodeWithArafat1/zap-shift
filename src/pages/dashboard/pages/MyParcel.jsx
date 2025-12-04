@@ -1,18 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-const AddProduct = () => {
-  const [parcel, setParcel] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
+const MyParcel = () => {
+  const { data: parcel, isLoading } = useQuery({
+    queryKey: ["myParcels"],
+    queryFn: async () => {
       const { data } = await axios.get("http://localhost:5000/api/parcels");
-      console.log(data);
-      setParcel(data);
-    };
-
-    fetchData();
-  }, []);
+      return data;
+    },
+  });
 
   const handelPayment = async (singleParcel) => {
     const paymentInfo = {
@@ -33,6 +30,9 @@ const AddProduct = () => {
     }
   };
 
+  if (isLoading) {
+    return <h1>loading...</h1>;
+  }
   return (
     <div>
       <div className="overflow-x-auto">
@@ -78,4 +78,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default MyParcel;

@@ -7,13 +7,13 @@ import Coverage from "../pages/Coverage/Coverage";
 import axios from "axios";
 import Login from "../pages/auth/Login";
 import Auth from "../layouts/Auth";
-import Dashboard from "../pages/dashboard/Dashboard";
-import AddProduct from "../pages/dashboard/pages/AddProduct";
 import DashboardLayout from "../layouts/DashboardLayout";
 import OverView from "../pages/dashboard/pages/OverView";
 import SendParcel from "../pages/SendParcel";
 import PaymentSuccess from "../pages/dashboard/pages/PaymentSuccess";
 import PaymentCancel from "../pages/dashboard/pages/PaymentCancel";
+import MyParcel from "../pages/dashboard/pages/MyParcel";
+import PaymentHistory from "../pages/dashboard/pages/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     Component: DashboardLayout,
     children: [
       {
@@ -62,17 +62,21 @@ const router = createBrowserRouter([
         Component: OverView,
       },
       {
-        path: "/dashboard/add-product",
-        Component: AddProduct,
+        path: "my-parcel",
+        Component: MyParcel,
       },
 
       {
-        path: "/dashboard/payment-success",
+        path: "payment-success",
         Component: PaymentSuccess,
       },
       {
-        path: "/dashboard/payment-cancel",
+        path: "payment-cancel",
         Component: PaymentCancel,
+      },
+      {
+        path: "payment-history",
+        Component: PaymentHistory,
       },
     ],
   },

@@ -1,6 +1,7 @@
 import React from "react";
 import { IoAddCircleOutline, IoHomeOutline } from "react-icons/io5";
-import { LuSettings2 } from "react-icons/lu";
+import { FaLuggageCart } from "react-icons/fa";
+import { MdPayment } from "react-icons/md";
 import { Link, Outlet } from "react-router";
 
 const Dashboard = () => {
@@ -34,12 +35,12 @@ const Dashboard = () => {
             </label>
             <div className="px-4">Navbar Title</div>
             <div className="">
-              <Link to='/'> Home</Link>
+              <Link to="/"> Home</Link>
             </div>
           </nav>
           {/* Page content here */}
           <div className="p-4">
-            <Outlet/>
+            <Outlet />
           </div>
         </div>
 
@@ -54,7 +55,8 @@ const Dashboard = () => {
             <ul className="menu w-full grow">
               {/* List item */}
               <li>
-                <Link to='/dashboard/'
+                <Link
+                  to="/dashboard/"
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="Homepage"
                 >
@@ -66,14 +68,29 @@ const Dashboard = () => {
 
               {/* List item */}
               <li>
-                <Link to='/dashboard/add-product'
+                <Link
+                  to="/dashboard/my-parcel"
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Add product"
+                  data-tip="My parcels"
                 >
                   {/* Settings icon */}
-                  <IoAddCircleOutline size={20} />
+                  <FaLuggageCart size={20} />
 
-                  <span className="is-drawer-close:hidden">Add product</span>
+                  <span className="is-drawer-close:hidden">My parcels</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/payment-history"
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My parcels"
+                >
+                  {/* Settings icon */}
+                  <MdPayment size={20} />
+
+                  <span className="is-drawer-close:hidden">
+                    Payment History
+                  </span>
                 </Link>
               </li>
             </ul>
